@@ -21,7 +21,7 @@
             pointer-events: none;
         }
 
-        /* Optional tomato splat effect */
+        /* Tomato splat effect */
         .tomato::after {
             content: '';
             position: absolute;
@@ -46,17 +46,12 @@
         document.addEventListener('click', function(e) {
             const tomato = document.createElement('div');
             tomato.className = 'tomato';
-            
-            // Set position where you clicked
             tomato.style.left = e.clientX + 'px';
             tomato.style.top = e.clientY + 'px';
-            
             document.body.appendChild(tomato);
             
-            // Remove tomato after animation (optional)
-            setTimeout(() => {
-                tomato.remove();
-            }, 1000);
+            // Remove after 1 second
+            setTimeout(() => tomato.remove(), 1000);
         });
     </script>
 </body>
