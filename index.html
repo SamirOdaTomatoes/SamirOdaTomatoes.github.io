@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomato Clicker</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            cursor: pointer;
+            background: url('https://i.ytimg.com/vi/P7NIJi1YB18/maxresdefault.jpg') fixed;
+            background-size: cover;
+        }
+        
+        .tomato {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: url('https://cdn.pixabay.com/photo/2013/07/13/01/22/tomato-155602_960_720.png');
+            background-size: contain;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        /* Optional tomato splat effect */
+        .tomato::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: splat 0.5s ease-out;
+        }
+
+        @keyframes splat {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('click', function(e) {
+            const tomato = document.createElement('div');
+            tomato.className = 'tomato';
+            
+            // Set position where you clicked
+            tomato.style.left = e.clientX + 'px';
+            tomato.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(tomato);
+            
+            // Remove tomato after animation (optional)
+            setTimeout(() => {
+                tomato.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
